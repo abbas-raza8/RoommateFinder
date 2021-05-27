@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <html>
+<head>
+<style>
+    body {
+  background-image: url('https://res.cloudinary.com/dpcbzfiye/image/upload/w_1620,c_fill,dpr_auto,f_auto,q_auto,fl_progressive/v1546986775/fiz5zkzw5eehp0o7f8uf.jpg');
+  background-repeat: no-repeat;
+  background-attachment:fixed;  
+  background-position:center;
+  background-size:cover;
+  background-position-x: center;
+
+}
+
+</style>
+</head>
+<body>
+
+
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% block content %}
+
+
+<h1 style="text-align: center; color: aliceblue; padding-top: 2%;">Roommate Finder</h1>
+{% if user.is_authenticated %}
+<div style="text-align: center; color:  aliceblue;">
+
+    {% if user.profile.first_name %}
+        Logged in as {{user.profile}}
+    {% else %}
+        Your profile for Roommate Finder has not been set up. Please click the button below to finish profile creation.
+        <div style="padding-top: 1%;">
+            <a class="btn btn-primary" href="{% url 'roommates:edit' %}" role="button" style="text-transform:none; ">
+                Create Profile
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<div class="col" style="padding-top: 5%; text-align: center; width: 70%; margin: 0 auto;">
+    <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+        <h4 class="my-0 fw-normal">Need Help Finding Roommates?</h4>
+        </div>
+        <div class="card-body">
+            <div class="text-break">
+                First set up your profile under the my profile tab. 
+                Once your profile is setup, click the browse tab
+                to view profiles that are the best match for you!
+                You can search for specific roommates by using the search bar
+                or you can filter specific requirements for roommates by using the filter option.
+                If you find someone you are interested in, you can favorite them and view them in the favorites tab.
+                If there is someone you are trying to avoid, you may certainly block them!
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+{% else %} <!-- If user is not authenticated, show the google login button-->
+<div class="col" style="padding-top: 5%; text-align: center; width: 50%; margin: 0 auto;">
+    <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+        <h4 class="my-0 fw-normal">Hoo's Looking For Roommates?</h4>
+        </div>
+        <div class="card-body">
+            <div class="text-break">
+                Find your next roommate at UVA using our application. Login down below and we'll help you find a roommate!
+            </div>
+        </div>
+    </div>
+    </div>
+<div style="text-align: center; padding-top: 3%;">
+    <a class="btn btn-outline-primary" href="{% provider_login_url 'google' %}" role="button" style="text-transform:none; background-color: aliceblue; color:blue ; border-color:#ffffff ; ">
+      <img width="20px" style="margin-bottom:3px; margin-right:5px;" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+      Login with Google
+    </a>
+</div>
+<div style="text-align: center; padding-bottom: 2%; padding-top: 2%;">
+    <a class="btn btn-labeled btn-outline-primary" style ="background-color: aliceblue; color:blue ;border-color:#ffffff" href="{% provider_login_url 'facebook' method='oauth2' %}">
+      <span class="btn-label"><i class="bi bi-facebook"></i></span> Login with Facebook</a>
+  </div>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>
+  <head>
+  <style>
+      body {
+    background-image: url('https://res.cloudinary.com/dpcbzfiye/image/upload/w_1620,c_fill,dpr_auto,f_auto,q_auto,fl_progressive/v1546986775/fiz5zkzw5eehp0o7f8uf.jpg');
+    background-repeat: no-repeat;
+    background-attachment:fixed;  
+    background-position:center;
+    background-size:cover;
+    background-position-x: center;
+  
+  }
+  
+  </style>
+  </head>
+
+
+<div class="container pt-4">
+
+    <h5 style="text-align: center; color: aliceblue;"> These are your blocked profiles:</h5> 
+  {% if new %}
+  <ul class="row g-4">
+    {% for profile in new %}
+      <div class="col-3">
+        <li class="card h-100">
+          <img
+            src="{{profile.profile_pic.url}}"
+            alt="Profile picture"
+            class="card-img-top"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ profile.first_name }} {{ profile.last_name }}</h5>
+            <h6 class="card-subtitle text-muted">{{ profile.pronouns }}</h6>
+            <p class="card-text">
+              {{ profile.bio }}
+            </p>
+            <div class="row">
+              <div class="col-6"><i class="bi-person-fill"></i> {{ profile.gender }}</div>
+              <div class="col-6"><i class="bi-calendar-date"></i> {{ profile.year }}</div>
+              <div class="col-6"><i class="bi-geo-alt-fill"></i> {{ profile.location_specific }}</div>
+              <div class="col-6"><i class="bi bi-book-half"></i> {{ profile.get_major_display }}</div>
+              <a href="{% url 'roommates:block_add' profile.id %}">
+            </div>
+          </div>
+          <div style="text-align: center; padding-bottom: 2%;">
+            <a class="btn btn-labeled btn-outline-danger" href="{% url 'roommates:block_add' profile.id %}">
+              <span class="btn-label"><i class="bi bi-trash"></i></span> Remove</a>
+          </div>
+        </li>
+      </div>
+    {% endfor %}
+  </ul>
+
+
+
+</div>
+{% endif %}
+{% endblock %}

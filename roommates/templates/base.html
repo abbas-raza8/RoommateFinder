@@ -1,0 +1,130 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<!--rotunda background: https://res.cloudinary.com/dpcbzfiye/image/upload/w_1620,c_fill,dpr_auto,f_auto,q_auto,fl_progressive/v1546986775/fiz5zkzw5eehp0o7f8uf.jpg -->
+<html lang="en">
+  <head>
+
+    <html>
+      <head>
+      <style>
+
+          body {
+            
+        background-image: url('https://res.cloudinary.com/dpcbzfiye/image/upload/w_1620,c_fill,dpr_auto,f_auto,q_auto,fl_progressive/v1546986775/fiz5zkzw5eehp0o7f8uf.jpg');
+        background-repeat: no-repeat;
+        background-attachment:fixed;  
+        background-position:center;
+        background-size:cover;
+        background-position-x: center;
+      
+      }
+      
+      </style>
+      </head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roommate Finder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '194028999002599',
+          xfbml      : true,
+          version    : 'v10.0'
+        });
+        FB.AppEvents.logPageView();
+      };
+  
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div class="container">
+              <a href="{% url 'roommates:login' %}" class="navbar-brand">Roommate Finder</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="{% url 'roommates:browse' %}">Browse</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="{% url 'roommates:my_profile' %}">My Profile</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="{% url 'roommates:favorite_list' %}">Favorites</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'roommates:block_list' %}">Blocked</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'roommates:messages' %}">Messages</a>
+                      </li>
+                      {% if user.is_authenticated %}
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'roommates:logout' %}">Logout</a>
+                      </li>
+                      {% endif %}
+                  </ul>
+              </div>               
+          </div>
+      </nav>
+    </header>
+    <style>
+        .main {
+          margin-bottom:150px;
+        }
+    </style>
+    <main class = 'main'>
+
+      {% block content %}
+      {% endblock %}
+
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=.0.5">
+  <style>
+  .footer {
+     position: fixed;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color:#0066ff;
+     color: white;
+     text-align: center;
+     
+  }
+  </style>
+  </head>
+  <body>
+
+      </style>
+      </head>
+      <body>
+      
+      
+      <div class="footer">
+        <div>CS3240 - Team A-24</div>
+        <a class="nav-link text-white" href="{% url 'roommates:privacy_policy' %}">Privacy Policy</a>
+        <div>Copyright © 2021. All rights reserved.</div>
+      </div>
+      
+
+</body>
+</html>

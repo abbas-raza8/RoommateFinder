@@ -1,0 +1,14 @@
+language: python
+python:
+- '3.8'
+install:
+- pip install -r requirements-travis.txt
+script:
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: AD/s0aBL+exY0Q3AoaRg4qTWKVx9ccwRrDLsOPkKiCHyVRAZdkVTs3Q0K0aIPOBFzcvHDOu2jOOHtldLT2rhBp6h5MUgylOH7kAoE9vwO9KbF3NWCd6FmnECuCz928ps8IjEmpz/jJEigocPx4OZ0s8B29OBofT6fX81p4vVMSyfvRcmr3BnWGGf95UGEPgZ1ac1QU6jS1fe6uOGI3nUjylFeRUuMEcmtxcsiF6hvy5IIct9PoDqf3swZdbJaIXC7hd7p8teCqIsrdP5RbMzLqw/tEia1dE3BKtqYr92/WxjNmet/NMTzVCZVp5pPgTsBtCFmQ2XSFO01nxetdgbaAml59Oksxth3wh/QCt5jo5kAIGZU5cIW28pcHmd8v0vB/4M3OOSENcew82keVisekaWFCggxRJ9tOA8an7NuRrib6vm9jm7Cxh5sgWuancVGvblrDKdtrMBIEh0puFRKxC/h04Zw/ynTOhBe9z7UvfJXiOyxGf5b/dyYxCrZEbKm3APDDvwF+P4dsFi574LlNxBy5gvtycmmf3Nrs8ChrPFBeo6LbAHODkyfLU1Iz+xo8Gj0TVEKIlUpRrkEp4codM7flr/yIfoC87T/T8oeXT6DG4H8Zr7o83e5AxOQ2V0J8YQv+wPAGlaFgVeeiUvDC+4PS0FGcMphU8BOshmoJA=
+  app: a24-roommate-finder
+  on:
+    repo: uva-cs3240-s21/project-a-24

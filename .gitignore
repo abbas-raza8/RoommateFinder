@@ -1,0 +1,12 @@
+.vscode/settings.json
+
+env
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.cpython-38.pyc
+__pycache__/
+roommates/__pycache__
+roommatefinder/__pycache__
+db.sqlite3

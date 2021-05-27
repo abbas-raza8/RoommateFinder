@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% block content %}
+    <h1 style="text-align: center; color: aliceblue;">Roommate Finder</h1>
+      {% if user.is_authenticated %}
+        <div style="text-align: center;color: aliceblue;">
+        <p> Your profile</p>
+        </div>
+
+{% block body %}
+{% for message in messages %}
+        {% if message.tags == "error" %}
+                    <div class="alert alert-danger" style="text-align: center;">
+                        <a data-dismiss="alert">×</a>
+                        {{ message }}
+                    </div>
+        {% endif %}
+            {% endfor %}        
+        <div class="container" style="color: aliceblue;">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+          
+             <table>
+              <!--Show all profile data as specified in forms.py -->
+             {{ profile_form.as_table }} 
+             </table>
+            
+             <button class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+
+        {% endblock %}
+
+        {% endif %}
+
+      <!--Here is where we would redirect (if user is not authenticated) -->
+{% endblock %}
